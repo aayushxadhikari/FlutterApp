@@ -230,19 +230,40 @@ class CarouselSliderExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // List of colors for each page
+    final List<Color> colors = [
+      Colors.red,
+      Colors.green,
+      Colors.blue,
+      Colors.purple,
+    ];
+
     return Scaffold(
       appBar: AppBar(title: const Text("Carousel Slider")),
       body: CarouselSlider(
-        options: CarouselOptions(height: 400.0),
-        items: [1, 2, 3].map((i) {
+        options: CarouselOptions(
+          height: 400.0,
+          enlargeCenterPage: true, // Make the centered page bigger
+          viewportFraction: 0.8,  // Adjust this to add space between the items
+        ),
+        items: [1, 2, 3, 4].map((i) {
           return Builder(
             builder: (BuildContext context) {
               return Container(
-                width: MediaQuery.of(context).size.width,
-                color: Colors.amber,
-                child: Center(
-                    child: Text('Item $i',
-                        style: const TextStyle(fontSize: 16.0))),
+                margin: const EdgeInsets.symmetric(horizontal: 10.0), // Add margin between items
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0), // Rounded corners
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    color: colors[i - 1], // Assign color based on the item index
+                    child: Center(
+                      child: Text(
+                        'Item $i',
+                        style: const TextStyle(fontSize: 16.0, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
               );
             },
           );
