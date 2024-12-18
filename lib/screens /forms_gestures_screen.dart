@@ -8,6 +8,7 @@ class FormsGesturesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Forms and Gestures Screen'),
+        
       ),
       body: const Center(
         child: Text('Forms and Gestures content goes here'),

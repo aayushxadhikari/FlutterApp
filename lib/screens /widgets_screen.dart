@@ -9,18 +9,19 @@ class WidgetsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Widgets Screen'),
+        backgroundColor: Colors.blueAccent,
       ),
       body: ListView(
-        children: [
-          WidgetButton(label: 'Bottom Navigation Bar', widget: const Placeholder()),
-          WidgetButton(label: 'ClipRRect Widget', widget: const Placeholder()),
-          WidgetButton(label: 'Drawer Widget', widget: const Placeholder()),
-          WidgetButton(label: 'ClipRect Widget', widget: const Placeholder()),
-          WidgetButton(label: 'Opacity Widget', widget: const Placeholder()),
-          WidgetButton(label: 'Rotated Box Widget', widget: const Placeholder()),
-          WidgetButton(label: 'RichText Widget', widget: const Placeholder()),
-          WidgetButton(label: 'OctoImage Widget', widget: const Placeholder()),
-          WidgetButton(label: 'AppBar Widget', widget: const Placeholder()),
+        children: const [
+          WidgetButton(label: 'Bottom Navigation Bar', widget: Placeholder()),
+          WidgetButton(label: 'ClipRRect Widget', widget: Placeholder()),
+          WidgetButton(label: 'Drawer Widget', widget: Placeholder()),
+          WidgetButton(label: 'ClipRect Widget', widget: Placeholder()),
+          WidgetButton(label: 'Opacity Widget', widget: Placeholder()),
+          WidgetButton(label: 'Rotated Box Widget', widget: Placeholder()),
+          WidgetButton(label: 'RichText Widget', widget: Placeholder()),
+          WidgetButton(label: 'OctoImage Widget', widget: Placeholder()),
+          WidgetButton(label: 'AppBar Widget', widget: Placeholder()),
         ],
       ),
     );

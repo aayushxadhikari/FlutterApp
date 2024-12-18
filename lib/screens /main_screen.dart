@@ -11,42 +11,144 @@ class MainScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF283593),
       ),
       body: ListView(
+        padding: const EdgeInsets.all(16.0),
         children: [
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/widgets');
             },
-            child: const Text('Widgets'),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+              backgroundColor: Colors.deepPurple,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              elevation: 8,
+              shadowColor: Colors.deepPurpleAccent,
+            ),
+            child: const Text(
+              'Widgets',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          TextButton(
+          const SizedBox(height: 16.0), // Adds spacing between buttons
+          ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/ui_components');
             },
-            child: const Text('UI Components'),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+              backgroundColor: Colors.blueAccent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              elevation: 8,
+              shadowColor: Colors.blue,
+            ),
+            child: const Text(
+              'UI Components',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          TextButton(
+          const SizedBox(height: 16.0),
+          ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/design_animation');
             },
-            child: const Text('Design and Animation'),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+              backgroundColor: Colors.teal,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              elevation: 8,
+              shadowColor: Colors.tealAccent,
+            ),
+            child: const Text(
+              'Design and Animation',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          TextButton(
+          const SizedBox(height: 16.0),
+          ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/forms_gestures');
             },
-            child: const Text('Forms and Gestures'),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+              backgroundColor: Colors.orange,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              elevation: 8,
+              shadowColor: Colors.orangeAccent,
+            ),
+            child: const Text(
+              'Forms and Gestures',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          TextButton(
+          const SizedBox(height: 16.0),
+          ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/accessing_device');
             },
-            child: const Text('Accessing Device'),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+              backgroundColor: Colors.red,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              elevation: 8,
+              shadowColor: Colors.redAccent,
+            ),
+            child: const Text(
+              'Accessing Device',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          TextButton(
+          const SizedBox(height: 16.0),
+          ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/advanced_flutter');
             },
-            child: const Text('Advanced Flutter Concepts'),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+              backgroundColor: Colors.green,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              elevation: 8,
+              shadowColor: Colors.greenAccent,
+            ),
+            child: const Text(
+              'Advanced Flutter Concepts',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
