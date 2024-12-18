@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterproject/screens%20/ui_components.dart';
 
 
 import 'screens /accessing_device_screen.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         '/main': (context) =>const MainScreen(),
         '/widgets': (context) => WidgetsScreen(),
+        '/ui_components': (context) => Uicomponents() ,
         '/design_animation': (context) => DesignAnimationScreen(),
         '/forms_gestures': (context) => FormsGesturesScreen(),
         '/accessing_device': (context) => AccessingDeviceScreen(),
