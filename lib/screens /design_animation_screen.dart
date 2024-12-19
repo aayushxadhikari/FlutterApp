@@ -179,28 +179,48 @@ class RouteTransitionAnimationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Route Transition Animation')),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(_fadeRoute(const ScreenOne()));
-              },
-              child: const Text('Fade Transition to Screen 1'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(_slideRoute(const ScreenTwo()));
-              },
-              child: const Text('Slide Transition to Screen 2'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(_scaleRoute(const ScreenThree()));
-              },
-              child: const Text('Scale Transition to Screen 3'),
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(_fadeRoute(const ScreenOne()));
+                },
+                child: const Text('Fade Transition to Screen 1'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(_slideRoute(const ScreenTwo()));
+                },
+                child: const Text('Slide Transition to Screen 2'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(_scaleRoute(const ScreenThree()));
+                },
+                child: const Text('Scale Transition to Screen 3'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(_rotationRoute(const ScreenFour()));
+                },
+                child: const Text('Rotation Transition to Screen 4'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(_sizeRoute(const ScreenFive()));
+                },
+                child: const Text('Size Transition to Screen 5'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(_customCurveRoute(const ScreenSix()));
+                },
+                child: const Text('Custom Curve Transition to Screen 6'),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -246,8 +266,48 @@ class RouteTransitionAnimationScreen extends StatelessWidget {
       },
     );
   }
+
+  // Rotation Transition
+  PageRouteBuilder _rotationRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return RotationTransition(turns: animation, child: child);
+      },
+    );
+  }
+
+  // Size Transition
+  PageRouteBuilder _sizeRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return Align(
+          child: SizeTransition(sizeFactor: animation, child: child),
+        );
+      },
+    );
+  }
+
+  // Custom Curve Transition
+  PageRouteBuilder _customCurveRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const curve = Curves.bounceInOut;
+        var curvedAnimation = CurvedAnimation(parent: animation, curve: curve);
+
+        return SlideTransition(
+          position: Tween<Offset>(begin: Offset(0.0, 1.0), end: Offset.zero)
+              .animate(curvedAnimation),
+          child: child,
+        );
+      },
+    );
+  }
 }
 
+// Dummy Screens for Navigation
 class ScreenOne extends StatelessWidget {
   const ScreenOne({super.key});
 
@@ -284,14 +344,225 @@ class ScreenThree extends StatelessWidget {
   }
 }
 
+class ScreenFour extends StatelessWidget {
+  const ScreenFour({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Screen 4')),
+      body: const Center(child: Text('Welcome to Screen 4')),
+    );
+  }
+}
+
+class ScreenFive extends StatelessWidget {
+  const ScreenFive({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Screen 5')),
+      body: const Center(child: Text('Welcome to Screen 5')),
+    );
+  }
+}
+
+class ScreenSix extends StatelessWidget {
+  const ScreenSix({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Screen 6')),
+      body: const Center(child: Text('Welcome to Screen 6')),
+    );
+  }
+}
+
+
 class RippleEffectScreen extends StatelessWidget {
   const RippleEffectScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const  Text('Ripple Effect')),
-      body: const Center(child: Text('Ripple Effect Content')),
+      appBar: AppBar(title: const Text('Ripple Effect')),
+      body: ListView(
+        padding: const EdgeInsets.all(16.0),
+        children: [
+          const Center(
+            child: Text(
+              'Ripple Effect Examples',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // 1. Standard Material Ripple Effect
+          ListTile(
+            title: const Text('Standard Material Ripple'),
+            tileColor: Colors.blue[100],
+            onTap: () {},
+          ),
+
+          const SizedBox(height: 10),
+
+          // 2. Button with Ripple Effect
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+            ),
+            child: const Text('Button Ripple Effect'),
+          ),
+
+          const SizedBox(height: 10),
+
+          // 3. IconButton with Ripple
+          Center(
+            child: IconButton(
+              icon: const Icon(Icons.favorite, color: Colors.red),
+              iconSize: 50,
+              onPressed: () {},
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          // 4. Custom Ripple with GestureDetector
+          GestureDetector(
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Custom Ripple Triggered!')),
+              );
+            },
+            child: Ink(
+              decoration: BoxDecoration(
+                color: Colors.green[100],
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(8.0),
+                splashColor: Colors.greenAccent,
+                onTap: () {},
+                child: const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text(
+                    'Custom Ripple with GestureDetector',
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          // 5. Ripple in a Circle
+          Center(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(50),
+              splashColor: Colors.blue,
+              onTap: () {},
+              child: Container(
+                height: 100,
+                width: 100,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  shape: BoxShape.circle,
+                ),
+                child: const Text(
+                  'Circle Ripple',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          // 6. Image with Ripple Effect
+          GestureDetector(
+            onTap: () {},
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(
+                    'https://via.placeholder.com/300',
+                    height: 150,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned.fill(
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      splashColor: Colors.white.withOpacity(0.5),
+                      onTap: () {},
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          // 7. List with Ripple Effect
+          for (int i = 0; i < 5; i++)
+            ListTile(
+              leading: CircleAvatar(
+                backgroundColor: Colors.blueAccent,
+                child: Text('${i + 1}'),
+              ),
+              title: Text('List Item ${i + 1}'),
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Tapped on List Item ${i + 1}')),
+                );
+              },
+            ),
+
+          const SizedBox(height: 10),
+
+          // 8. GridView with Ripple Effect
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0,
+            ),
+            itemCount: 4,
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Tapped on Grid Item ${index + 1}')),
+                  );
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.purple[100],
+                  child: Text(
+                    'Grid Item ${index + 1}',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }
