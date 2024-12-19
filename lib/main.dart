@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         '/main': (context) =>const MainScreen(),
         '/widgets': (context) => const WidgetsScreen(),
         '/ui_components': (context) => const Uicomponents() ,
-        '/design_animation': (context) => const DesignAnimationScreen(),
+        '/design_animation': (context) =>  DesignAnimationScreen(),
         '/forms_gestures': (context) => const FormsGesturesScreen(),
         '/accessing_device': (context) => const AccessingDeviceScreen(),
         '/advanced_flutter': (context) => const AdvancedFlutterConceptsScreen(),

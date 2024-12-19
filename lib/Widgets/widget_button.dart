@@ -36,7 +36,7 @@ class WidgetButton extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.widgets_outlined,
               color: Colors.blueAccent,
               size: 28,
